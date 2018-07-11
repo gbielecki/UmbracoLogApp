@@ -82,9 +82,9 @@ namespace UmbracoLogApp
             //  consumerKey: "",
             //  consumerSecret: "");
 
-            app.UseFacebookAuthentication(
-              appId: "186078998755215",
-              appSecret: "5677364715be7533e962610fc6145b9a");
+            //app.UseFacebookAuthentication(
+            //  appId: "",
+            //  appSecret: "");
 
             //app.UseGoogleAuthentication(
             //  clientId: "AIzaSyA0ms_-8gLw2aN4XKZdX8AFHaaNM_z58C0",
