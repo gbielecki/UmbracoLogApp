@@ -1,0 +1,54 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
+@using UmbracoLogApp.Controllers
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = null;
+}
+<h2>home</h2>
+
+@if (TempData["productAdded"] != null)
+{
+    <h3>Product added.</h3>
+}
+
+@using (Html.BeginUmbracoForm<RegisterProductSurfaceController>("AddProduct", null, new { @class = "form-signin" }))
+{
+    <div class="form-group row">
+        <div class="col-xs-12 col-sm-9">
+            <span class="btn btn-default btn-file">
+                <input type="file" name="reciept" id="reciept" />
+            </span>
+            <br />
+            <img id="image" />
+        </div>
+    </div>
+
+    <label for="inputidentifier" class="sr-only">Identifiter</label>
+    <input name="identifier" type="text" id="identifier"
+           class="form-control" placeholder="Surname" required="" autofocus="" autocomplete="off">
+    <br />
+    <label for="inputdateOfPurchase" class="sr-only">Date Of Purchase</label>
+    <input name="dateOfPurchase" type="date" id="dateOfPurchase"
+           class="form-control" placeholder="Email address">
+    <br />
+    <label for="inputShopNo" class="sr-only">Shop No</label>
+    <input name="shopNo" type="number" id="shopNo"
+           class="form-control" placeholder="Set A Password" autocomplete="off">
+    <br />
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Add product</button>
+}
+
+<script>
+    document.getElementById("reciept").onchange = function () {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("image").src = e.target.result;
+        };
+
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    };
+</script>
